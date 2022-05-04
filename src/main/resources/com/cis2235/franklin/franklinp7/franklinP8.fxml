@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TitledPane collapsible="false" text="Franklin P8 Enigma Machine&#10;- POLYMORPHISM!!" wrapText="true" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cis2235.franklin.franklinp7.HelloController">
+   <content>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="54.0" layoutY="14.0" text="Welcome to the Enigma Encoding and Decoding Machine" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="41.0" prefHeight="80.0" prefWidth="328.0" text="To Encode, enter your message in the Text Box below.&#10;Use a random key or enter one and then press Encode.&#10;Select File &gt; Save File to save your message to a file.&#10;Remember your key or you can't decode the message later!" wrapText="true" />
+            <Label alignment="TOP_LEFT" layoutX="356.0" layoutY="41.0" prefHeight="52.0" prefWidth="229.0" text="To Decode, Select File &gt; Open File&#10;then select the file you wish to decode.&#10;Press Decode below." wrapText="true" />
+            <RadioButton fx:id="radRand" layoutX="14.0" layoutY="140.0" mnemonicParsing="false" onAction="#onRandKey" prefHeight="17.0" prefWidth="216.0" selected="true" text="Use Enigma-Generated Key">
+               <toggleGroup>
+                  <ToggleGroup fx:id="grpKey" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="radManual" layoutX="14.0" layoutY="170.0" mnemonicParsing="false" onAction="#onManualKey" prefHeight="17.0" prefWidth="151.0" text="Enter a key, 1-50" toggleGroup="$grpKey" />
+            <TextField fx:id="txbKey" editable="false" layoutX="14.0" layoutY="197.0" prefHeight="25.0" prefWidth="58.0" />
+            <Button fx:id="btnDecode" layoutX="356.0" layoutY="93.0" mnemonicParsing="false" onAction="#onDecode" text="Decode" />
+            <Button fx:id="btnClear" layoutX="298.0" layoutY="197.0" mnemonicParsing="false" onAction="#onClear" text="Clear" />
+            <Button fx:id="btnEncode" layoutX="114.0" layoutY="197.0" mnemonicParsing="false" onAction="#onEncode" text="Encode" />
+            <Label layoutX="45.0" layoutY="279.0" text="Message: " />
+            <Label layoutX="144.0" layoutY="248.0" text="***SECRET MESSAGE SUMMARY***" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txbMessage" layoutX="106.0" layoutY="275.0" prefHeight="25.0" prefWidth="462.0" />
+            <Label layoutX="9.0" layoutY="312.0" text="Coded Message: " />
+            <TextField fx:id="txbCodedMessage" layoutX="106.0" layoutY="308.0" prefHeight="25.0" prefWidth="462.0" />
+            <Label layoutX="72.0" layoutY="349.0" text="Key: " />
+            <TextField fx:id="txbSummaryKey" layoutX="106.0" layoutY="345.0" prefHeight="25.0" prefWidth="56.0" />
+            <MenuButton fx:id="btnEType" layoutX="199.0" layoutY="136.0" mnemonicParsing="false" popupSide="TOP" text="ENCODE: Select Enigma Type">
+              <items>
+                  <RadioMenuItem id="0" fx:id="rdbGEnig" mnemonicParsing="false" onAction="#onGEnigSelect" selected="true" text="G Enigma">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="grpEType" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem id="1" fx:id="rdbPEnig" mnemonicParsing="false" onAction="#onPrimesSelect" text="Primes Enigma" toggleGroup="$grpEType" />
+                  <RadioMenuItem id="2" fx:id="rdbHEnig" mnemonicParsing="false" onAction="#onHighSelect" text="Highlander Enigma" toggleGroup="$grpEType" />
+              </items>
+            </MenuButton>
+         </children>
+      </AnchorPane>
+   </content>
+   <graphic>
+      <MenuBar fx:id="menuFileMenu" prefHeight="25.0" prefWidth="455.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="menuFile" mnemonicParsing="false" onAction="#onFileClick" text="Save Encoded Message" />
+                  <MenuItem fx:id="openFile" mnemonicParsing="false" onAction="#onFileOpenClick" text="Open txt File" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuHelp" mnemonicParsing="false" text="About">
+               <items>
+                  <MenuItem fx:id="about" mnemonicParsing="false" onAction="#onAboutClick" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </graphic>
+   <font>
+      <Font name="System Italic" size="12.0" />
+   </font>
+</TitledPane>
